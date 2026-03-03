@@ -20,4 +20,14 @@ jobs:
           account: conjur
           host_id: ${{ secrets.CONJUR_USERNAME }}
           api_key: ${{ secrets.CONJUR_API_KEY }}
-          secrets: db/sqlusername|sql_username;db/sql_password
+          secrets: >-
+            vault01/secrets/Postgresql-DB/app01/username|db_username;
+            vault01/secrets/Postgresql-DB/app01/password|db_password
+
+      - name: Use the secrets
+        run: |
+          echo "Connecting to PostgreSQL..."
+          psql -U $db_username -p $db_password -h your-db-host
+          echo "Successfully connected to PostgreSQL!"
+
+# test run - 3 March 2026

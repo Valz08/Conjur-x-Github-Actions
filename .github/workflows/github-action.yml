@@ -27,7 +27,7 @@ jobs:
       - name: Use the secrets
         run: |
           echo "Connecting to PostgreSQL..."
-          psql -U $db_username -p $db_password -h your-db-host
+          psql -U $db_username -p $db_password -h 172.15.10.100
           echo "Successfully connected to PostgreSQL!"
 
 # test run - 3 March 2026
